@@ -12,7 +12,7 @@ public abstract class AbstractTest {
     protected WebDriver driver;
 
     @BeforeMethod
-    public void setUp() {
+    public void setUp() throws InterruptedException {
         String driverPath = this.getClass().getClassLoader().getResource(CHROME_DRIVER_NAME).getPath();
         System.setProperty("webdriver.chrome.driver", driverPath);
 
