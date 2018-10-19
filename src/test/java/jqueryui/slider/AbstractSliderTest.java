@@ -1,4 +1,4 @@
-package slider;
+package jqueryui.slider;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;

@@ -1,4 +1,4 @@
-package slider;
+package jqueryui.slider;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -12,7 +12,7 @@ import static org.testng.Assert.assertEquals;
 
 public class SliderTest extends AbstractSliderTest {
 
-    private static final String SLIDER_URL = "https://jqueryui.com/slider/#custom-handle";
+    private static final String SLIDER_URL = "https://jqueryui.com/jqueryui.slider/#custom-handle";
 
     @Override
     @BeforeClass
@@ -30,7 +30,7 @@ public class SliderTest extends AbstractSliderTest {
     }
 
     @Test(dataProvider = "sliderData")
-    public void sliderTest(int moveTo, int expected) throws InterruptedException {
+    public void sliderTest(int moveTo, int expected) {
 
         WebElement sliderElement = driver.findElement(By.xpath("//*[@id=\"custom-handle\"]"));
 
