@@ -8,8 +8,6 @@ import static org.testng.Assert.assertEquals;
 
 public class DropableTest extends AbstractTest {
 
-    private static final String DROPPABLE_URL = "https://jqueryui.com/droppable/";
-
     @Test
     public void droppableTest() {
         driver.get(DroppablePage.DROPPABLE_PAGE_URL);
