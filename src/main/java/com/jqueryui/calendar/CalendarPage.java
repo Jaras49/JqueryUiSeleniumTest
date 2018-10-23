@@ -1,5 +1,6 @@
 package com.jqueryui.calendar;
 
+import com.jqueryui.AbstractPage;
 import com.jqueryui.menu.Menu;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,13 +12,9 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 
-public class CalendarPage {
+public class CalendarPage extends AbstractPage {
 
-    private WebDriver driver;
     private Menu menu;
-
-    @FindBy(css = ".demo-frame")
-    private WebElement iFrame;
 
     @FindBy(css = "#ui-datepicker-div")
     private WebElement calendarDiv;
@@ -41,7 +38,7 @@ public class CalendarPage {
     private List<WebElement> calendarDays;
 
     public CalendarPage(WebDriver driver, Menu menu) {
-        this.driver = driver;
+        super(driver);
         this.menu = menu;
         PageFactory.initElements(driver, this);
     }

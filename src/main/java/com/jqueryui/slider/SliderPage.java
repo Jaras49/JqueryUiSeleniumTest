@@ -1,5 +1,6 @@
 package com.jqueryui.slider;
 
+import com.jqueryui.AbstractPage;
 import com.jqueryui.menu.Menu;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -8,27 +9,28 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class SliderPage {
+public class SliderPage extends AbstractPage {
 
-    private WebDriver driver;
     private Menu menu;
-
-    @FindBy(css = ".demo-frame")
-    private WebElement iFrame;
 
     @FindBy(id = "custom-handle")
     private WebElement slider;
 
     public SliderPage(WebDriver driver, Menu menu) {
-        this.driver = driver;
+        super(driver);
         this.menu = menu;
         PageFactory.initElements(driver, this);
     }
 
-    public void moveSlider(int moveToValue) {
-        driver.switchTo().defaultContent();
+    public void switchToIframe() {
         driver.switchTo().frame(iFrame);
+    }
 
+    public void switchToParentFrame() {
+        driver.switchTo().parentFrame();
+    }
+
+    public void moveSlider(int moveToValue) {
         int currentPosition = getSliderValue();
         int moveBy;
         Keys key;

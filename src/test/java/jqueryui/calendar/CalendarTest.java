@@ -36,7 +36,7 @@ public class CalendarTest extends AbstractTest {
     }
 
     @Test(dataProvider = "calendarData")
-    public void calendarTest(String date, String expected) throws InterruptedException {
+    public void calendarTest(String date, String expected) {
         CalendarPage calendarPage = new CalendarPage(driver, new Menu(driver));
         calendarPage.switchToIframe();
         calendarPage.clickInputField();

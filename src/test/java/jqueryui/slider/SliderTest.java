@@ -27,6 +27,7 @@ public class SliderTest extends AbstractSliderTest {
     @Test(dataProvider = "sliderData")
     public void sliderTest(int moveTo, int expected) {
         SliderPage sliderPage = new SliderPage(driver, new Menu(driver));
+        sliderPage.switchToIframe();
         sliderPage.moveSlider(moveTo);
         assertEquals(sliderPage.getSliderValue(), expected);
     }
