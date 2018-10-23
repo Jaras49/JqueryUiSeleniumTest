@@ -3,7 +3,6 @@ package jqueryui.calendar;
 import com.jqueryui.calendar.CalendarPage;
 import com.jqueryui.menu.Menu;
 import jqueryui.AbstractTest;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -14,16 +13,8 @@ import static org.testng.Assert.assertEquals;
 
 public class CalendarTest extends AbstractTest {
 
-    private static final String CALENDAR_URL = "https://jqueryui.com/datepicker/#other-months";
     private static final String INPUT_DATE_FORMAT = "d.MM.yyyy";
     private static final String OUTPUT_DATE_FORMAT = "MM/dd/yyyy";
-
-    @Override
-    @BeforeMethod
-    public void setUp() {
-        super.setUp();
-        driver.get(CALENDAR_URL);
-    }
 
     @DataProvider(name = "calendarData")
     public static Object[][] calendarData() {
@@ -38,6 +29,9 @@ public class CalendarTest extends AbstractTest {
     @Test(dataProvider = "calendarData")
     public void calendarTest(String date, String expected) {
         CalendarPage calendarPage = new CalendarPage(driver, new Menu(driver));
+
+        calendarPage.getMenu().clickDatepicker();
+
         calendarPage.switchToIframe();
         calendarPage.clickInputField();
         calendarPage.moveToDate(LocalDate.parse(date, DateTimeFormatter.ofPattern(INPUT_DATE_FORMAT)));

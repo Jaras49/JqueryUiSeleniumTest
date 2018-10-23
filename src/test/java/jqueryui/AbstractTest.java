@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 public abstract class AbstractTest {
 
     private static final String CHROME_DRIVER_NAME = "chromedriver.exe";
+    private static final String JQUERY_UI_URL = "https://jqueryui.com/";
 
     protected WebDriver driver;
 
@@ -21,6 +22,7 @@ public abstract class AbstractTest {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS).pageLoadTimeout(20, TimeUnit.SECONDS);
+        driver.get(JQUERY_UI_URL);
     }
 
     @AfterMethod

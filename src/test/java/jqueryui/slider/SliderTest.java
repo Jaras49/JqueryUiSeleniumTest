@@ -2,33 +2,31 @@ package jqueryui.slider;
 
 import com.jqueryui.menu.Menu;
 import com.jqueryui.slider.SliderPage;
-import org.testng.annotations.BeforeClass;
+import jqueryui.AbstractTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class SliderTest extends AbstractSliderTest {
-
-    private static final String SLIDER_PAGE_URL = "https://jqueryui.com/slider/#custom-handle";
-
-    @Override
-    @BeforeClass
-    public void setUp() {
-        super.setUp();
-        driver.get(SLIDER_PAGE_URL);
-    }
+public class SliderTest extends AbstractTest {
 
     @DataProvider(name = "sliderData")
     public static Object[][] sliderData() {
-        return new Object[][]{{80, 80}, {50, 50}, {55, 55}, {55, 55}};
+        return new Object[][]{{80, 80, 35, 35}, {50, 50, 15, 15}, {55, 55, 80, 80}, {55, 55, 12, 12}};
     }
 
     @Test(dataProvider = "sliderData")
-    public void sliderTest(int moveTo, int expected) {
+    public void sliderTest(int moveTo1, int expected1, int moveTo2, int expected2) {
         SliderPage sliderPage = new SliderPage(driver, new Menu(driver));
+
+        sliderPage.getMenu().clickSlider();
+        sliderPage.clickCustomHandleButton();
         sliderPage.switchToIframe();
-        sliderPage.moveSlider(moveTo);
-        assertEquals(sliderPage.getSliderValue(), expected);
+
+        sliderPage.moveSlider(moveTo1);
+        assertEquals(sliderPage.getSliderValue(), expected1);
+
+        sliderPage.moveSlider(moveTo2);
+        assertEquals(sliderPage.getSliderValue(), expected2);
     }
 }

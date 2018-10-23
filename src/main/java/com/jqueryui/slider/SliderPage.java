@@ -16,6 +16,9 @@ public class SliderPage extends AbstractPage {
     @FindBy(id = "custom-handle")
     private WebElement slider;
 
+    @FindBy(xpath = "//a[contains(text(), 'Custom handle')]")
+    private WebElement customHandleButton;
+
     public SliderPage(WebDriver driver, Menu menu) {
         super(driver);
         this.menu = menu;
@@ -28,6 +31,10 @@ public class SliderPage extends AbstractPage {
 
     public void switchToParentFrame() {
         driver.switchTo().parentFrame();
+    }
+
+    public void clickCustomHandleButton() {
+        customHandleButton.click();
     }
 
     public void moveSlider(int moveToValue) {
