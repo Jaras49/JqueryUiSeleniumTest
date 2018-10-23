@@ -1,5 +1,6 @@
 package com.jqueryui.droppable;
 
+import com.jqueryui.menu.LeftMenu;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,9 +10,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class DroppablePage {
 
-    public static final String DROPPABLE_PAGE_URL = "https://jqueryui.com/droppable/";
-
     private WebDriver driver;
+    private LeftMenu leftMenu;
 
     @FindBy(css = ".demo-frame")
     private WebElement iFrame;
@@ -22,8 +22,9 @@ public class DroppablePage {
     @FindBy(css = "#droppable")
     private WebElement droppableElement;
 
-    public DroppablePage(WebDriver driver) {
+    public DroppablePage(WebDriver driver, LeftMenu leftMenu) {
         this.driver = driver;
+        this.leftMenu = leftMenu;
         PageFactory.initElements(driver, this);
     }
 
@@ -42,5 +43,9 @@ public class DroppablePage {
 
     public void switchToParentFrame() {
         driver.switchTo().parentFrame();
+    }
+
+    public LeftMenu getLeftMenu() {
+        return leftMenu;
     }
 }
