@@ -1,7 +1,7 @@
 package jqueryui.dropable;
 
 import com.jqueryui.droppable.DroppablePage;
-import com.jqueryui.menu.LeftMenu;
+import com.jqueryui.menu.Menu;
 import jqueryui.AbstractTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -21,9 +21,9 @@ public class DropableTest extends AbstractTest {
 
     @Test
     public void droppableTest() {
-        DroppablePage droppablePage = new DroppablePage(driver, new LeftMenu(driver));
+        DroppablePage droppablePage = new DroppablePage(driver, new Menu(driver));
 
-        droppablePage.getLeftMenu().clickDroppable();
+        droppablePage.getMenu().clickDroppable();
         droppablePage.switchToDemoFrame();
         droppablePage.dragRectangle();
         assertEquals(droppablePage.getDroppableMessage(), "Dropped!");

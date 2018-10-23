@@ -1,6 +1,6 @@
 package com.jqueryui.calendar;
 
-import com.jqueryui.menu.LeftMenu;
+import com.jqueryui.menu.Menu;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,7 +14,7 @@ import java.util.List;
 public class CalendarPage {
 
     private WebDriver driver;
-    private LeftMenu leftMenu;
+    private Menu menu;
 
     @FindBy(css = ".demo-frame")
     private WebElement iFrame;
@@ -40,9 +40,9 @@ public class CalendarPage {
     @FindBy(css = "td[data-handler='selectDay']")
     private List<WebElement> calendarDays;
 
-    public CalendarPage(WebDriver driver, LeftMenu leftMenu) {
+    public CalendarPage(WebDriver driver, Menu menu) {
         this.driver = driver;
-        this.leftMenu = leftMenu;
+        this.menu = menu;
         PageFactory.initElements(driver, this);
     }
 
@@ -89,8 +89,8 @@ public class CalendarPage {
                 .ifPresent(WebElement::click);
     }
 
-    public LeftMenu getLeftMenu() {
-        return leftMenu;
+    public Menu getMenu() {
+        return menu;
     }
 
     public String getInputValue() {

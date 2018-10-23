@@ -1,7 +1,7 @@
 package jqueryui.calendar;
 
 import com.jqueryui.calendar.CalendarPage;
-import com.jqueryui.menu.LeftMenu;
+import com.jqueryui.menu.Menu;
 import jqueryui.AbstractTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -37,7 +37,7 @@ public class CalendarTest extends AbstractTest {
 
     @Test(dataProvider = "calendarData")
     public void calendarTest(String date, String expected) throws InterruptedException {
-        CalendarPage calendarPage = new CalendarPage(driver, new LeftMenu(driver));
+        CalendarPage calendarPage = new CalendarPage(driver, new Menu(driver));
         calendarPage.switchToIframe();
         calendarPage.clickInputField();
         calendarPage.moveToDate(LocalDate.parse(date, DateTimeFormatter.ofPattern(INPUT_DATE_FORMAT)));

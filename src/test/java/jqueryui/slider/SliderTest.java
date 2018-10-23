@@ -1,6 +1,6 @@
 package jqueryui.slider;
 
-import com.jqueryui.menu.LeftMenu;
+import com.jqueryui.menu.Menu;
 import com.jqueryui.slider.SliderPage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -26,7 +26,7 @@ public class SliderTest extends AbstractSliderTest {
 
     @Test(dataProvider = "sliderData")
     public void sliderTest(int moveTo, int expected) {
-        SliderPage sliderPage = new SliderPage(driver, new LeftMenu(driver));
+        SliderPage sliderPage = new SliderPage(driver, new Menu(driver));
         sliderPage.moveSlider(moveTo);
         assertEquals(sliderPage.getSliderValue(), expected);
     }

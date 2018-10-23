@@ -1,6 +1,6 @@
 package com.jqueryui.slider;
 
-import com.jqueryui.menu.LeftMenu;
+import com.jqueryui.menu.Menu;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 public class SliderPage {
 
     private WebDriver driver;
-    private LeftMenu leftMenu;
+    private Menu menu;
 
     @FindBy(css = ".demo-frame")
     private WebElement iFrame;
@@ -19,9 +19,9 @@ public class SliderPage {
     @FindBy(id = "custom-handle")
     private WebElement slider;
 
-    public SliderPage(WebDriver driver, LeftMenu leftMenu) {
+    public SliderPage(WebDriver driver, Menu menu) {
         this.driver = driver;
-        this.leftMenu = leftMenu;
+        this.menu = menu;
         PageFactory.initElements(driver, this);
     }
 
@@ -49,7 +49,7 @@ public class SliderPage {
         return Integer.valueOf(slider.getText());
     }
 
-    public LeftMenu getLeftMenu() {
-        return leftMenu;
+    public Menu getMenu() {
+        return menu;
     }
 }

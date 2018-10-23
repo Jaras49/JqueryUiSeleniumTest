@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LeftMenu {
+public class Menu {
 
     private WebDriver driver;
 
@@ -18,7 +18,7 @@ public class LeftMenu {
     @FindBy(xpath = "//*[@id='sidebar']//a[contains(text(), 'Slider')]")
     private WebElement slider;
 
-    public LeftMenu(WebDriver driver) {
+    public Menu(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
