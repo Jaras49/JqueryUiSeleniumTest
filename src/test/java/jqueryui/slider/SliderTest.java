@@ -1,6 +1,6 @@
 package jqueryui.slider;
 
-import com.jqueryui.menu.Menu;
+import com.jqueryui.menu.MenuPage;
 import com.jqueryui.slider.SliderPage;
 import jqueryui.AbstractTest;
 import org.testng.annotations.DataProvider;
@@ -17,7 +17,7 @@ public class SliderTest extends AbstractTest {
 
     @Test(dataProvider = "sliderData")
     public void sliderTest(int moveTo1, int expected1, int moveTo2, int expected2) {
-        SliderPage sliderPage = new SliderPage(driver, new Menu(driver));
+        SliderPage sliderPage = new SliderPage(driver, new MenuPage(driver));
 
         sliderPage.getMenu().clickSlider();
         sliderPage.clickCustomHandleButton();

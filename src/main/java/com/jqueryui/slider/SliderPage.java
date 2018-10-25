@@ -1,7 +1,7 @@
 package com.jqueryui.slider;
 
 import com.jqueryui.AbstractPage;
-import com.jqueryui.menu.Menu;
+import com.jqueryui.menu.MenuPage;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SliderPage extends AbstractPage {
 
-    private Menu menu;
+    private MenuPage menu;
 
     @FindBy(id = "custom-handle")
     private WebElement slider;
@@ -19,7 +19,7 @@ public class SliderPage extends AbstractPage {
     @FindBy(xpath = "//a[contains(text(), 'Custom handle')]")
     private WebElement customHandleButton;
 
-    public SliderPage(WebDriver driver, Menu menu) {
+    public SliderPage(WebDriver driver, MenuPage menu) {
         super(driver);
         this.menu = menu;
         PageFactory.initElements(driver, this);
@@ -58,7 +58,7 @@ public class SliderPage extends AbstractPage {
         return Integer.valueOf(slider.getText());
     }
 
-    public Menu getMenu() {
+    public MenuPage getMenu() {
         return menu;
     }
 }

@@ -1,7 +1,7 @@
 package com.jqueryui.droppable;
 
 import com.jqueryui.AbstractPage;
-import com.jqueryui.menu.Menu;
+import com.jqueryui.menu.MenuPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class DroppablePage extends AbstractPage {
 
-    private Menu menu;
+    private MenuPage menu;
 
     @FindBy(css = "#draggable")
     private WebElement draggableElement;
@@ -19,7 +19,7 @@ public class DroppablePage extends AbstractPage {
     @FindBy(css = "#droppable")
     private WebElement droppableElement;
 
-    public DroppablePage(WebDriver driver, Menu menu) {
+    public DroppablePage(WebDriver driver, MenuPage menu) {
         super(driver);
         this.menu = menu;
         PageFactory.initElements(driver, this);
@@ -42,7 +42,7 @@ public class DroppablePage extends AbstractPage {
         driver.switchTo().parentFrame();
     }
 
-    public Menu getMenu() {
+    public MenuPage getMenu() {
         return menu;
     }
 }
