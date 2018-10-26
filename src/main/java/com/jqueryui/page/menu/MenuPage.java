@@ -1,4 +1,4 @@
-package com.jqueryui.menu;
+package com.jqueryui.page.menu;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

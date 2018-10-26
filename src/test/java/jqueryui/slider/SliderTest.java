@@ -1,7 +1,7 @@
 package jqueryui.slider;
 
-import com.jqueryui.menu.MenuPage;
-import com.jqueryui.slider.SliderPage;
+import com.jqueryui.page.menu.MenuPage;
+import com.jqueryui.page.slider.SliderPage;
 import jqueryui.AbstractTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

@@ -1,7 +1,7 @@
-package com.jqueryui.calendar;
+package com.jqueryui.page.calendar;
 
-import com.jqueryui.AbstractPage;
-import com.jqueryui.menu.MenuPage;
+import com.jqueryui.page.AbstractPage;
+import com.jqueryui.page.menu.MenuPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

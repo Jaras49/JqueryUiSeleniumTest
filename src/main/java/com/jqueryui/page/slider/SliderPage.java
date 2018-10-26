@@ -1,7 +1,7 @@
-package com.jqueryui.slider;
+package com.jqueryui.page.slider;
 
-import com.jqueryui.AbstractPage;
-import com.jqueryui.menu.MenuPage;
+import com.jqueryui.page.AbstractPage;
+import com.jqueryui.page.menu.MenuPage;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

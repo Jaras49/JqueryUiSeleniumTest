@@ -1,7 +1,7 @@
 package jqueryui.calendar;
 
-import com.jqueryui.calendar.CalendarPage;
-import com.jqueryui.menu.MenuPage;
+import com.jqueryui.page.calendar.CalendarPage;
+import com.jqueryui.page.menu.MenuPage;
 import jqueryui.AbstractTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
