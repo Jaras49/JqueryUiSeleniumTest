@@ -1,6 +1,5 @@
 package jqueryui.slider;
 
-import com.jqueryui.page.menu.MenuPage;
 import com.jqueryui.page.slider.SliderPage;
 import jqueryui.AbstractTest;
 import org.testng.annotations.DataProvider;
@@ -17,13 +16,10 @@ public class SliderTest extends AbstractTest {
 
     @Test(dataProvider = "sliderData")
     public void sliderTest(int moveTo1, int expected1, int moveTo2, int expected2) {
-        SliderPage sliderPage = new SliderPage(driver, new MenuPage(driver));
-
-        sliderPage.getMenu().clickSlider();
-        sliderPage.clickCustomHandleButton();
-        sliderPage.switchToIframe();
-
-        sliderPage.moveSlider(moveTo1);
+        SliderPage sliderPage = menu.goToSliderPage()
+                .clickCustomHandleButton()
+                .switchToIframe()
+                .moveSlider(moveTo1);
         assertEquals(sliderPage.getSliderValue(), expected1);
 
         sliderPage.moveSlider(moveTo2);

@@ -43,27 +43,32 @@ public class CalendarPage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void switchToIframe() {
+    public CalendarPage switchToIframe() {
         driver.switchTo().frame(iFrame);
+        return this;
     }
 
-    public void switchToParentFrame() {
+    public CalendarPage switchToParentFrame() {
         driver.switchTo().parentFrame();
+        return this;
     }
 
-    public void clickInputField() {
+    public CalendarPage clickInputField() {
         inputField.click();
+        return this;
     }
 
-    public void clickCallendarNext() {
+    public CalendarPage clickCallendarNext() {
         callendarNext.click();
+        return this;
     }
 
-    public void clickCallendarPrev() {
+    public CalendarPage clickCallendarPrev() {
         callendarPrev.click();
+        return this;
     }
 
-    public void moveToDate(LocalDate date) {
+    public CalendarPage moveToDate(LocalDate date) {
         LocalDate desiredYearAndMonth = LocalDate.of(date.getYear(), date.getMonth(), 1);
         LocalDate currentYearAndMonth = getCurrentYearAndMonth();
 
@@ -75,22 +80,24 @@ public class CalendarPage extends AbstractPage {
             }
             currentYearAndMonth = getCurrentYearAndMonth();
         }
+        return this;
     }
 
-    public void clickDay(LocalDate date) {
+    public CalendarPage clickDay(LocalDate date) {
         calendarDays.stream()
                 .filter(day -> Integer.valueOf(day.getAttribute("data-month")).equals(date.getMonthValue() - 1))
                 .map(day -> day.findElement(By.cssSelector("a")))
                 .filter(day -> Integer.valueOf(day.getText()).equals(date.getDayOfMonth()))
                 .findAny()
                 .ifPresent(WebElement::click);
+        return this;
     }
 
     public MenuPage getMenu() {
         return menu;
     }
 
-    public String getInputValue() {
+    public String getDateInputValue() {
         return inputField.getAttribute("value");
     }
 

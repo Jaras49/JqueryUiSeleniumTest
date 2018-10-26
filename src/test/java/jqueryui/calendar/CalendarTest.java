@@ -1,7 +1,6 @@
 package jqueryui.calendar;
 
 import com.jqueryui.page.calendar.CalendarPage;
-import com.jqueryui.page.menu.MenuPage;
 import jqueryui.AbstractTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -28,15 +27,16 @@ public class CalendarTest extends AbstractTest {
 
     @Test(dataProvider = "calendarData")
     public void calendarTest(String date, String expected) {
-        CalendarPage calendarPage = new CalendarPage(driver, new MenuPage(driver));
 
-        calendarPage.getMenu().clickDatepicker();
+        CalendarPage calendarPage = menu.goToDatepickerPage()
+                .switchToIframe()
+                .clickInputField()
+                .moveToDate(parseDate(date))
+                .clickDay(parseDate(date));
+        assertEquals(calendarPage.getDateInputValue(), expected);
+    }
 
-        calendarPage.switchToIframe();
-        calendarPage.clickInputField();
-        calendarPage.moveToDate(LocalDate.parse(date, DateTimeFormatter.ofPattern(INPUT_DATE_FORMAT)));
-        calendarPage.clickDay(LocalDate.parse(date, DateTimeFormatter.ofPattern(INPUT_DATE_FORMAT)));
-
-        assertEquals(calendarPage.getInputValue(), expected);
+    private LocalDate parseDate(String date) {
+        return LocalDate.parse(date, DateTimeFormatter.ofPattern(INPUT_DATE_FORMAT));
     }
 }

@@ -1,5 +1,9 @@
 package com.jqueryui.page.menu;
 
+import com.jqueryui.factory.PageObjectFactory;
+import com.jqueryui.page.calendar.CalendarPage;
+import com.jqueryui.page.droppable.DroppablePage;
+import com.jqueryui.page.slider.SliderPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,15 +27,18 @@ public class MenuPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void clickDroppable() {
+    public DroppablePage goToDroppablePage() {
         droppable.click();
+        return PageObjectFactory.createDroppablePage(driver);
     }
 
-    public void clickDatepicker() {
+    public CalendarPage goToDatepickerPage() {
         datepicker.click();
+        return PageObjectFactory.createCalendarPage(driver);
     }
 
-    public void clickSlider() {
+    public SliderPage goToSliderPage() {
         slider.click();
+        return PageObjectFactory.createSliderPage(driver);
     }
 }

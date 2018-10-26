@@ -25,19 +25,22 @@ public class SliderPage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void switchToIframe() {
+    public SliderPage switchToIframe() {
         driver.switchTo().frame(iFrame);
+        return this;
     }
 
-    public void switchToParentFrame() {
+    public SliderPage switchToParentFrame() {
         driver.switchTo().parentFrame();
+        return this;
     }
 
-    public void clickCustomHandleButton() {
+    public SliderPage clickCustomHandleButton() {
         customHandleButton.click();
+        return this;
     }
 
-    public void moveSlider(int moveToValue) {
+    public SliderPage moveSlider(int moveToValue) {
         int currentPosition = getSliderValue();
         int moveBy;
         Keys key;
@@ -52,6 +55,7 @@ public class SliderPage extends AbstractPage {
         for (int i = 0; i < moveBy; i++) {
             move.sendKeys(slider, key).perform();
         }
+        return this;
     }
 
     public int getSliderValue() {

@@ -25,21 +25,24 @@ public class DroppablePage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void dragRectangle() {
+    public DroppablePage dragAndDropRectangle() {
         new Actions(driver).dragAndDrop(draggableElement, droppableElement)
                 .perform();
+        return this;
     }
 
     public String getDroppableMessage() {
         return droppableElement.findElement(By.cssSelector("p")).getText();
     }
 
-    public void switchToDemoFrame() {
+    public DroppablePage switchToDemoFrame() {
         driver.switchTo().frame(iFrame);
+        return this;
     }
 
-    public void switchToParentFrame() {
+    public DroppablePage switchToParentFrame() {
         driver.switchTo().parentFrame();
+        return this;
     }
 
     public MenuPage getMenu() {
