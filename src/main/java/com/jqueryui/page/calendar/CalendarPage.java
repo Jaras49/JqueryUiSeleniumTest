@@ -5,6 +5,7 @@ import com.jqueryui.page.menu.MenuPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -15,6 +16,9 @@ import java.util.List;
 public class CalendarPage extends AbstractPage {
 
     private MenuPage menu;
+
+    @FindBy(xpath = "//*[@class='demo-list']//a[.='Dates in other months']")
+    private WebElement datesInOtherMonthsButton;
 
     @FindBy(css = "#ui-datepicker-div")
     private WebElement calendarDiv;
@@ -43,6 +47,11 @@ public class CalendarPage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
+    public CalendarPage clickDatesInOtherMonthsButton() {
+        datesInOtherMonthsButton.click();
+        return this;
+    }
+
     public CalendarPage switchToIframe() {
         driver.switchTo().frame(iFrame);
         return this;
@@ -54,7 +63,7 @@ public class CalendarPage extends AbstractPage {
     }
 
     public CalendarPage clickInputField() {
-        inputField.click();
+        new Actions(driver).click(inputField).perform();
         return this;
     }
 
@@ -73,6 +82,9 @@ public class CalendarPage extends AbstractPage {
         LocalDate currentYearAndMonth = getCurrentYearAndMonth();
 
         while (!desiredYearAndMonth.equals(currentYearAndMonth)) {
+            if (!calendarDiv.isDisplayed()) {
+                clickInputField();
+            }
             if (desiredYearAndMonth.isAfter(currentYearAndMonth)) {
                 clickCallendarNext();
             } else if (desiredYearAndMonth.isBefore(currentYearAndMonth)) {

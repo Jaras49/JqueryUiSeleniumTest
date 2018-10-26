@@ -26,9 +26,10 @@ public class CalendarTest extends AbstractTest {
     }
 
     @Test(dataProvider = "calendarData")
-    public void calendarTest(String date, String expected) {
+    public void calendarTest(String date, String expected) throws InterruptedException {
 
         CalendarPage calendarPage = menu.goToDatepickerPage()
+                .clickDatesInOtherMonthsButton()
                 .switchToIframe()
                 .clickInputField()
                 .moveToDate(parseDate(date))
