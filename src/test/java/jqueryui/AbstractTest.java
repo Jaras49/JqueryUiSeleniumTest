@@ -7,8 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-import java.util.concurrent.TimeUnit;
-
 public abstract class AbstractTest {
 
     private static final String CHROME_DRIVER_NAME = "chromedriver.exe";
@@ -24,7 +22,6 @@ public abstract class AbstractTest {
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS).pageLoadTimeout(20, TimeUnit.SECONDS);
         driver.get(JQUERY_UI_URL);
 
         menu = PageObjectFactory.createMenuPage(driver);

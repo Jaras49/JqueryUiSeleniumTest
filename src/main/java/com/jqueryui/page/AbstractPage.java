@@ -1,19 +1,18 @@
 package com.jqueryui.page;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class AbstractPage {
 
     protected WebDriver driver;
+    protected WebDriverWait wait;
+    protected Actions actions;
 
-    @FindBy(css = ".demo-frame")
-    protected WebElement iFrame;
-
-    public AbstractPage(WebDriver driver) {
+    public AbstractPage(WebDriver driver, WebDriverWait wait, Actions actions) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        this.wait = wait;
+        this.actions = actions;
     }
 }

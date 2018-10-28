@@ -8,10 +8,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SliderPage extends AbstractPage {
 
     private MenuPage menu;
+
+    @FindBy(css = ".demo-frame")
+    private WebElement iFrame;
 
     @FindBy(id = "custom-handle")
     private WebElement slider;
@@ -19,8 +23,8 @@ public class SliderPage extends AbstractPage {
     @FindBy(xpath = "//a[contains(text(), 'Custom handle')]")
     private WebElement customHandleButton;
 
-    public SliderPage(WebDriver driver, MenuPage menu) {
-        super(driver);
+    public SliderPage(WebDriver driver, WebDriverWait wait, Actions actions, MenuPage menu) {
+        super(driver, wait, actions);
         this.menu = menu;
         PageFactory.initElements(driver, this);
     }
