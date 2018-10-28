@@ -4,15 +4,18 @@ import com.jqueryui.page.droppable.DroppablePage;
 import jqueryui.AbstractTest;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-
 public class DropableTest extends AbstractTest {
 
     @Test
     public void droppableTest() {
-        DroppablePage droppablePage = menu.goToDroppablePage()
-                .switchToDemoFrame()
-                .dragAndDropRectangle();
-        assertEquals(droppablePage.getDroppableMessage(), "Dropped!");
+        DroppablePage droppablePage = openDroppablePage();
+
+        droppablePage.switchToDemoFrame()
+                .dragAndDropRectangle()
+                .assertEquals(droppablePage.getDroppableMessage(), "Dropped!", droppablePage);
+    }
+
+    private DroppablePage openDroppablePage() {
+        return menu.goToDroppablePage();
     }
 }

@@ -1,5 +1,6 @@
 package com.jqueryui.page.menu;
 
+import com.jqueryui.annotations.WaitUntilVisible;
 import com.jqueryui.factory.PageObjectFactory;
 import com.jqueryui.page.AbstractPage;
 import com.jqueryui.page.calendar.CalendarPage;
@@ -14,18 +15,22 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MenuPage extends AbstractPage {
 
+    @WaitUntilVisible
     @FindBy(xpath = "//*[@id='sidebar']//a[contains(text(), 'Droppable')]")
     private WebElement droppable;
 
+    @WaitUntilVisible
     @FindBy(xpath = "//*[@id='sidebar']//a[contains(text(), 'Datepicker')]")
     private WebElement datepicker;
 
+    @WaitUntilVisible
     @FindBy(xpath = "//*[@id='sidebar']//a[contains(text(), 'Slider')]")
     private WebElement slider;
 
     public MenuPage(WebDriver driver, WebDriverWait wait, Actions actions) {
         super(driver, wait, actions);
         PageFactory.initElements(driver, this);
+        waitUntilPageLoads();
     }
 
     public DroppablePage goToDroppablePage() {

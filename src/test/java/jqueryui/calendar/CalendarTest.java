@@ -8,8 +8,6 @@ import org.testng.annotations.Test;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import static org.testng.Assert.assertEquals;
-
 public class CalendarTest extends AbstractTest {
 
     private static final String INPUT_DATE_FORMAT = "d.MM.yyyy";
@@ -27,14 +25,18 @@ public class CalendarTest extends AbstractTest {
 
     @Test(dataProvider = "calendarData")
     public void calendarTest(String date, String expected) {
+        CalendarPage calendarPage = openCalendarPage();
 
-        CalendarPage calendarPage = menu.goToDatepickerPage()
-                .clickDatesInOtherMonthsButton()
+        calendarPage.clickDatesInOtherMonthsButton()
                 .switchToIframe()
                 .clickInputField()
                 .moveToDate(parseDate(date))
-                .clickDay(parseDate(date));
-        assertEquals(calendarPage.getDateInputValue(), expected);
+                .clickDay(parseDate(date))
+                .assertEquals(calendarPage.getDateInputValue(), expected, calendarPage);
+    }
+
+    private CalendarPage openCalendarPage() {
+        return menu.goToDatepickerPage();
     }
 
     private LocalDate parseDate(String date) {

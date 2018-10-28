@@ -1,5 +1,6 @@
 package com.jqueryui.page.droppable;
 
+import com.jqueryui.annotations.WaitUntilVisible;
 import com.jqueryui.page.AbstractPage;
 import com.jqueryui.page.menu.MenuPage;
 import org.openqa.selenium.By;
@@ -14,6 +15,7 @@ public class DroppablePage extends AbstractPage {
 
     private MenuPage menu;
 
+    @WaitUntilVisible
     @FindBy(css = ".demo-frame")
     private WebElement iFrame;
 
@@ -27,10 +29,11 @@ public class DroppablePage extends AbstractPage {
         super(driver, wait, actions);
         this.menu = menu;
         PageFactory.initElements(driver, this);
+        waitUntilPageLoads();
     }
 
     public DroppablePage dragAndDropRectangle() {
-        new Actions(driver).dragAndDrop(draggableElement, droppableElement)
+        actions.dragAndDrop(draggableElement, droppableElement)
                 .perform();
         return this;
     }

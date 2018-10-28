@@ -1,5 +1,6 @@
 package com.jqueryui.page.calendar;
 
+import com.jqueryui.annotations.WaitUntilVisible;
 import com.jqueryui.page.AbstractPage;
 import com.jqueryui.page.menu.MenuPage;
 import org.openqa.selenium.By;
@@ -8,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -17,6 +20,11 @@ public class CalendarPage extends AbstractPage {
 
     private MenuPage menu;
 
+    @WaitUntilVisible
+    @FindBy(css = ".demo-frame")
+    private WebElement iFrame;
+
+    @WaitUntilVisible
     @FindBy(xpath = "//*[@class='demo-list']//a[.='Dates in other months']")
     private WebElement datesInOtherMonthsButton;
 
@@ -41,14 +49,16 @@ public class CalendarPage extends AbstractPage {
     @FindBy(css = "td[data-handler='selectDay']")
     private List<WebElement> calendarDays;
 
-    public CalendarPage(WebDriver driver, MenuPage menu) {
-        super(driver);
+    public CalendarPage(WebDriver driver, WebDriverWait wait, Actions actions, MenuPage menu) {
+        super(driver, wait, actions);
         this.menu = menu;
         PageFactory.initElements(driver, this);
+        waitUntilPageLoads();
     }
 
     public CalendarPage clickDatesInOtherMonthsButton() {
         datesInOtherMonthsButton.click();
+        wait.until(ExpectedConditions.attributeContains(iFrame, "src", "/other-months.html"));
         return this;
     }
 
@@ -63,7 +73,7 @@ public class CalendarPage extends AbstractPage {
     }
 
     public CalendarPage clickInputField() {
-        new Actions(driver).click(inputField).perform();
+        inputField.click();
         return this;
     }
 
@@ -82,9 +92,6 @@ public class CalendarPage extends AbstractPage {
         LocalDate currentYearAndMonth = getCurrentYearAndMonth();
 
         while (!desiredYearAndMonth.equals(currentYearAndMonth)) {
-            if (!calendarDiv.isDisplayed()) {
-                clickInputField();
-            }
             if (desiredYearAndMonth.isAfter(currentYearAndMonth)) {
                 clickCallendarNext();
             } else if (desiredYearAndMonth.isBefore(currentYearAndMonth)) {

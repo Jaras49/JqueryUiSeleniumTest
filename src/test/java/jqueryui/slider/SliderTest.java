@@ -5,8 +5,6 @@ import jqueryui.AbstractTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-
 public class SliderTest extends AbstractTest {
 
     @DataProvider(name = "sliderData")
@@ -16,13 +14,17 @@ public class SliderTest extends AbstractTest {
 
     @Test(dataProvider = "sliderData")
     public void sliderTest(int moveTo1, int expected1, int moveTo2, int expected2) {
-        SliderPage sliderPage = menu.goToSliderPage()
-                .clickCustomHandleButton()
-                .switchToIframe()
-                .moveSlider(moveTo1);
-        assertEquals(sliderPage.getSliderValue(), expected1);
+        SliderPage sliderPage = openSliderPage();
 
-        sliderPage.moveSlider(moveTo2);
-        assertEquals(sliderPage.getSliderValue(), expected2);
+        sliderPage.clickCustomHandleButton()
+                .switchToIframe()
+                .moveSlider(moveTo1)
+                .assertEquals(sliderPage.getSliderValue(), expected1, sliderPage)
+                .moveSlider(moveTo2)
+                .assertEquals(sliderPage.getSliderValue(), expected2, sliderPage);
+    }
+
+    private SliderPage openSliderPage() {
+        return menu.goToSliderPage();
     }
 }

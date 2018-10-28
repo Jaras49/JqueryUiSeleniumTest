@@ -1,5 +1,6 @@
 package com.jqueryui.page.slider;
 
+import com.jqueryui.annotations.WaitUntilVisible;
 import com.jqueryui.page.AbstractPage;
 import com.jqueryui.page.menu.MenuPage;
 import org.openqa.selenium.Keys;
@@ -8,25 +9,29 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SliderPage extends AbstractPage {
 
     private MenuPage menu;
 
+    @WaitUntilVisible
     @FindBy(css = ".demo-frame")
     private WebElement iFrame;
 
-    @FindBy(id = "custom-handle")
-    private WebElement slider;
-
+    @WaitUntilVisible
     @FindBy(xpath = "//a[contains(text(), 'Custom handle')]")
     private WebElement customHandleButton;
+
+    @FindBy(id = "custom-handle")
+    private WebElement slider;
 
     public SliderPage(WebDriver driver, WebDriverWait wait, Actions actions, MenuPage menu) {
         super(driver, wait, actions);
         this.menu = menu;
         PageFactory.initElements(driver, this);
+        waitUntilPageLoads();
     }
 
     public SliderPage switchToIframe() {
@@ -45,6 +50,8 @@ public class SliderPage extends AbstractPage {
     }
 
     public SliderPage moveSlider(int moveToValue) {
+        wait.until(ExpectedConditions.elementToBeClickable(slider));
+
         int currentPosition = getSliderValue();
         int moveBy;
         Keys key;
