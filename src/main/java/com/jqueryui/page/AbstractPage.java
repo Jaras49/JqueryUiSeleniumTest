@@ -12,7 +12,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractPage {
+public abstract class AbstractPage<T extends AbstractPage>{
 
     protected WebDriver driver;
     protected WebDriverWait wait;
@@ -24,9 +24,9 @@ public abstract class AbstractPage {
         this.actions = actions;
     }
 
-    public <T, M> T assertEquals(M actual, M expected, T pageObject) {
+    public <V> T assertEquals(V actual, V expected) {
         Assert.assertEquals(actual, expected);
-        return pageObject;
+        return (T) this;
     }
 
     protected void waitUntilPageLoads() {

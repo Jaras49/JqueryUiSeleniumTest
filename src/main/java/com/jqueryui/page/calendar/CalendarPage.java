@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 
-public class CalendarPage extends AbstractPage {
+public class CalendarPage extends AbstractPage<CalendarPage> {
 
     private MenuPage menu;
 

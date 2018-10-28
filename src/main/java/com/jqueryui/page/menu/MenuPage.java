@@ -13,7 +13,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class MenuPage extends AbstractPage {
+public class MenuPage extends AbstractPage<MenuPage> {
 
     @WaitUntilVisible
     @FindBy(xpath = "//*[@id='sidebar']//a[contains(text(), 'Droppable')]")

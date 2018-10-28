@@ -19,9 +19,9 @@ public class SliderTest extends AbstractTest {
         sliderPage.clickCustomHandleButton()
                 .switchToIframe()
                 .moveSlider(moveTo1)
-                .assertEquals(sliderPage.getSliderValue(), expected1, sliderPage)
+                .assertEquals(sliderPage.getSliderValue(), expected1)
                 .moveSlider(moveTo2)
-                .assertEquals(sliderPage.getSliderValue(), expected2, sliderPage);
+                .assertEquals(sliderPage.getSliderValue(), expected2);
     }
 
     private SliderPage openSliderPage() {

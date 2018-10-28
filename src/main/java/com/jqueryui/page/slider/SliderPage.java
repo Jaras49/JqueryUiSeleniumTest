@@ -12,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SliderPage extends AbstractPage {
+public class SliderPage extends AbstractPage<SliderPage> {
 
     private MenuPage menu;
 

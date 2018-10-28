@@ -12,7 +12,7 @@ public class DropableTest extends AbstractTest {
 
         droppablePage.switchToDemoFrame()
                 .dragAndDropRectangle()
-                .assertEquals(droppablePage.getDroppableMessage(), "Dropped!", droppablePage);
+                .assertEquals(droppablePage.getDroppableMessage(), "Dropped!");
     }
 
     private DroppablePage openDroppablePage() {

@@ -32,7 +32,7 @@ public class CalendarTest extends AbstractTest {
                 .clickInputField()
                 .moveToDate(parseDate(date))
                 .clickDay(parseDate(date))
-                .assertEquals(calendarPage.getDateInputValue(), expected, calendarPage);
+                .assertEquals(calendarPage.getDateInputValue(), expected);
     }
 
     private CalendarPage openCalendarPage() {
